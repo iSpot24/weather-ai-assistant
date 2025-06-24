@@ -18,8 +18,8 @@ class UserService
     public function create($displayName): User|string
     {
         $validator = Validator::make(
-          ['display_name' => $displayName],
-          ['display_name' => 'required|string|min:3|max:50']
+            ['display_name' => $displayName],
+            ['display_name' => 'required|string|min:3|max:50']
         );
 
         if ($validator->fails()) {
