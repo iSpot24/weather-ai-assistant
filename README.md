@@ -8,9 +8,9 @@ A simple CLI weather AI chat using Laravel, OpenAI, and Open-Meteo API.
 2. Run `composer install`
 3. Copy `.env.example` to `.env` and configure:
     - `OPENAI_API_KEY` - Your OpenAI API key
-    - `OPENAI_MAX_TOKENS` - Optional for setting max tokens
-    - `OPENAI_MAX_STEPS` - Optional for setting the number of interactions. (min: 2)
-    - `OPENAI_CONV_CONTEXT_LENGTH` - The number of chat exchanges to be added as context. Can also be disabled.
+    - `OPENAI_MAX_TOKENS` - Optional for setting max tokens (default: 500)
+    - `OPENAI_MAX_STEPS` - Optional for setting the number of interactions. (min: 2, default: 2)
+    - `OPENAI_CONV_CONTEXT_LENGTH` - The number of chat exchanges to be added as context. Can also be disabled if not set.
     - `OPEN_METEO_WEATHER_URL` - Open-Meteo weather endpoint. Setting is optional
     - `OPEN_METEO_GEOCODING_URL` - Open-Meteo Geocoding endpoint for location coordinates. Setting is optional
 4. Run `php artisan migrate` and create SQLITE file when asked
