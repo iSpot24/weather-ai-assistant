@@ -144,7 +144,6 @@ class ChatService
             ->withStringParameter('location', 'The city to get weather for')
             ->using(function (): string {
                 if ($location = $this->session->getAttribute('location')) {
-                    dump($location);
                     return "User's stored location is: $location";
                 }
 
