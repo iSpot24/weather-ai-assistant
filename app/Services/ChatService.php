@@ -15,8 +15,9 @@ class ChatService
     private const SYSTEM_PROMPT = <<<PROMPT
         You are a helpful weather assistant. Your primary function is to:
         1. Determine if users are asking about weather
-        2. Get location data when needed.
-        3. Get detailed weather information. You can only provide one set of data.
+        2. Use the 'get_user_location' tool to check if you already know the user's location
+        3. Get location data when needed.
+        4. Get detailed weather information. You can only provide one set of data.
         5. Always ask the user if he wants to know about a different location and nothing else.
         Identify and extract the new city provided and use it.
         6. Provide friendly, conversational responses
@@ -141,7 +142,6 @@ class ChatService
     {
         return Tool::as('get_user_location')
             ->for("Get the user's stored location if available")
-            ->withStringParameter('location', 'The city to get weather for')
             ->using(function (): string {
                 if ($location = $this->session->getAttribute('location')) {
                     return "User's stored location is: $location";
