@@ -27,7 +27,7 @@ class SessionService
      * @param array $data
      * @return Session|null
      */
-    public function updateSession(Session $session, array $data): Session|null
+    public function updateSession(Session $session, array $data): ?Session
     {
         $validator = Validator::make($data, [
             'location' => 'sometimes|required|string|min:2|max:100',
@@ -53,7 +53,7 @@ class SessionService
      * @param array $history
      * @return Session|null
      */
-    public function updateHistory(Session $session, array $history): Session|null
+    public function updateHistory(Session $session, array $history): ?Session
     {
         $validator = Validator::make($history, [
             'location' => 'sometimes|required|string|min:2|max:100',
