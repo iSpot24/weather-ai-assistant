@@ -7,6 +7,9 @@ use App\Services\ChatService;
 use App\Services\UserService;
 use Illuminate\Console\Command;
 
+/**
+ *
+ */
 class WeatherChatCommand extends Command
 {
     /**
@@ -23,9 +26,19 @@ class WeatherChatCommand extends Command
      */
     protected $description = 'Begin chatting with the AI weather assistant';
 
+    /**
+     * @var ChatService
+     */
     private ChatService $chatService;
+    /**
+     * @var UserService
+     */
     private UserService $userService;
 
+    /**
+     * @param ChatService $chatService
+     * @param UserService $userService
+     */
     public function __construct(ChatService $chatService, UserService $userService)
     {
         parent::__construct();
@@ -66,6 +79,9 @@ class WeatherChatCommand extends Command
         return self::SUCCESS;
     }
 
+    /**
+     * @return void
+     */
     private function displayWelcome(): void
     {
         $this->info("\nType 'exit|quit|bye' to stop chatting\n");
@@ -73,6 +89,9 @@ class WeatherChatCommand extends Command
         $this->info("Assistant: Ask me about the weather anywhere in the world!\n");
     }
 
+    /**
+     * @return array|int
+     */
     private function initSession(): array|int
     {
         $this->info("Assistant: Let's get started!");
@@ -118,7 +137,11 @@ class WeatherChatCommand extends Command
         ];
     }
 
-    private function checkClose(mixed $input)
+    /**
+     * @param mixed $input
+     * @return bool
+     */
+    private function checkClose(mixed $input): bool
     {
         return in_array(strtolower($input), ['exit', 'quit', 'bye']);
     }
