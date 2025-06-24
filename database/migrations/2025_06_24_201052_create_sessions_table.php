@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->string('location')->nullable();
-            $table->decimal('long', 10, 7);
-            $table->decimal('lat', 10, 7);
+            $table->decimal('long', 10, 7)->nullable();
+            $table->decimal('lat', 10, 7)->nullable();
             $table->json('history')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id', 'user_fk')
                 ->references('id')
-                ->on('user')
+                ->on('users')
                 ->onDelete('cascade');
             $table->index('user_id', 'user_fk_index');
         });

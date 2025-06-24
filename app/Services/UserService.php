@@ -19,11 +19,11 @@ class UserService
     {
         $validator = Validator::make(
             ['display_name' => $displayName],
-            ['display_name' => 'required|string|min:3|max:50']
+            ['display_name' => 'required|string|min:2|max:50']
         );
 
         if ($validator->fails()) {
-            return "There seems to be a problem with the information you gave me. Let's try again.";
+            return "Assistant: There seems to be a problem with the information you gave me. Let's try again.";
         }
 
         $displayName = $validator->valid()['display_name'];
@@ -44,11 +44,11 @@ class UserService
     {
         $validator = Validator::make(
             ['display_name' => $displayName],
-            ['display_name' => 'required|string|min:3|max:50']
+            ['display_name' => 'required|string|min:2|max:50']
         );
 
         if ($validator->fails()) {
-            return "There seems to be a problem with the information you gave me. Let's try again.";
+            return "Assistant: There seems to be a problem with the information you gave me. Let's try again.";
         }
 
         $displayName = $validator->valid()['display_name'];

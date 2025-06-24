@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'open-meteo' => [
+    'open_meteo' => [
         'weather_url' => env('OPEN_METEO_WEATHER_URL', 'https://api.open-meteo.com/v1/forecast'),
         'geocoding_url' => env('OPEN_METEO_GEOCODING_URL', 'https://geocoding-api.open-meteo.com/v1/search')
     ]

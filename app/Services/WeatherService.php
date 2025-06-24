@@ -79,7 +79,7 @@ class WeatherService
             ]
         ]);
 
-        $data = json_encode($response->getBody()->getContents(), true);
+        $data = json_decode($response->getBody()->getContents(), true);
 
         if (isset($data['error']) || !isset($data['results']) || !isset($data['results'][0])) {
             return null;

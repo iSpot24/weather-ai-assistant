@@ -26,7 +26,7 @@ class ChatService
         2. User may ask what's the current location you know, provide it to him.
         3. Use all the information you receive and always format it accordingly on new lines in natural language.
         4. Don't leave anything out of your response.
-        5. If location unknown: politely ask for location
+        5. If location unknown: politely ask for location.
 
         Keep responses concise and friendly.
         PROMPT;
@@ -67,11 +67,9 @@ class ChatService
      * @param int $userId
      * @return Session
      */
-    public function initSession(int $userId): Session
+    public function createSession(int $userId): Session
     {
-        $this->session = $this->sessionService->create($userId);
-
-        return $this->session;
+        return $this->sessionService->create($userId);
     }
 
     /**
@@ -94,7 +92,7 @@ class ChatService
             ->withMaxTokens(config('prism.providers.openai.max_tokens'))
             ->withSystemPrompt($systemPrompt)
             ->withPrompt($message)
-            ->withTools([$this->getUserLocationTool(), $this->getWeatherTool()])
+            ->withTools([$this->getWeatherTool(), $this->getUserLocationTool()])
             ->asText();
 
         if (!$response->text) {
@@ -108,7 +106,7 @@ class ChatService
         ]);
 
         if (!$this->session) {
-            return "Something went wrong. Tell the user to create a new session.";
+            return "Something went wrong. Please create a new session.";
         }
 
         return $response->text;
@@ -141,11 +139,12 @@ class ChatService
      */
     private function getUserLocationTool(): \Prism\Prism\Tool
     {
-        return Tool::as('get_weather')
-            ->for('Get user location if available')
+        return Tool::as('get_user_location')
+            ->for("Get the user's stored location if available")
             ->withStringParameter('location', 'The city to get weather for')
             ->using(function (): string {
                 if ($location = $this->session->getAttribute('location')) {
+                    dump($location);
                     return "User's stored location is: $location";
                 }
 
