@@ -5,6 +5,7 @@ return [
         'openai' => [
             'url' => env('OPENAI_URL', 'https://api.openai.com/v1'),
             'api_key' => env('OPENAI_API_KEY'),
+            'model' => env('OPENAI_MODEL', 'gpt-3.5-turbo'),
             'organization' => env('OPENAI_ORGANIZATION'),
             'max_tokens' => env('OPENAI_MAX_TOKENS', 500),
             'max_steps' => env('OPENAI_MAX_STEPS', 2),

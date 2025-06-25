@@ -87,7 +87,7 @@ class ChatService
         }
 
         $response = Prism::text()
-            ->using(Provider::OpenAI, 'gpt-3.5-turbo')
+            ->using(Provider::OpenAI, config('prism.providers.openai.model'))
             ->withMaxSteps(config('prism.providers.openai.max_steps'))
             ->withMaxTokens(config('prism.providers.openai.max_tokens'))
             ->withSystemPrompt($systemPrompt)
