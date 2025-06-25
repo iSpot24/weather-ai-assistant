@@ -20,7 +20,7 @@ A simple CLI weather AI chat using Laravel, OpenAI, and Open-Meteo API.
 ## Usage
 
 - Provide name that will be used as authentication and to restore last session
-- Ask about the weather
+- Ask about the weather (ex: "What's the weather at my location?")
 - Provide a city name when asked
 - The AI will remember the location for future sessions
 - It can be asked for a different location in same session
